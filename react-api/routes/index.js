@@ -36,7 +36,7 @@ router.get('/all', (req,res,next)=>{
   })
 })
 
-router.get('/id', (req, res, next)=>{
+router.get('/:id', (req, res, next)=>{
 	db('sayings').where('id', req.params.id)
 		.then(sayings=>{
 			res.status(200).json(sayings)
