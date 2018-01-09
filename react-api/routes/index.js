@@ -19,7 +19,7 @@ router.get('/random', (req, res, next) => {
 router.post('/new', (req,res,next)=>{
   db('sayings').insert(req.body).returning('*')
   .then(saying =>{
-    res.status(200).json(saying)
+    res.status(201).json(saying)
   })
   .catch(err=>{
     res.status(400).json(err)
@@ -34,6 +34,16 @@ router.get('/all', (req,res,next)=>{
   .catch(err=>{
     res.status(400).json(err)
   })
+})
+
+router.put('/:id', (req, res, next)=>{
+	db('sayings').where('id', req.params.id).update(req.body)
+	.then(sayings=>{
+		res.status(200).json(sayings)
+	})
+	.catch(err=>{
+		res.status(400.json(err))
+	})
 })
 
 function getRandomNumber(num) {
