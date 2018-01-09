@@ -42,7 +42,7 @@ router.put('/:id', (req, res, next)=>{
 		res.status(200).json(sayings)
 	})
 	.catch(err=>{
-		res.status(400.json(err))
+		res.status(400).json(err)
 	})
 })
 
